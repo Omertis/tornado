@@ -1985,4 +1985,30 @@ message.channel.send(':ballot_box_with_check:**Your info was changed to \`' + ar
 }
 )
 
+
+
+
+var googl = require('goo.gl');
+
+googl.setKey('AIzaSyC9MdpZYw0ELyRQuAhz4ycYJnBUgE0BEDc');
+ 
+googl.getKey();
+ 
+client.on('ready', () => {
+    console.log('ready');
+}).on('message', message => {
+    let args = message.content.split(' ').slice(1);
+    if(message.content.startsWith(prefix + 'short')) {
+    googl.shorten(args[0])
+    .then(function (shortenUrl) {
+        message.channel.send(`this is the Short Link: ${shortenUrl}`);
+    })
+    .catch(function (err) {
+        console.log(err.message);
+    });
+}
+});
+
+
+
 client.login("NDI2MzUzMTU3ODA4MDYyNDY0.DcJR9g.QzvJsBkTEcKTPGe85Mo4mR4cEnw")
